@@ -1,0 +1,30 @@
+{
+    "parameters": {
+      "subscriptionId": "292d7caa-a878-4de8-b774-689097666272",
+      "resourceGroupName": "shhirji-northeurope",
+      "hostPoolName": "test",
+      "msixPackageName": "manualtest2",
+      "api-version": "2019-12-10-preview"
+    },
+    "responses": {
+      "200": {
+        "body": {
+          "name": "sessionHost1.microsoft.com",
+          "id": "subscriptions/292d7caa-a878-4de8-b774-689097666272/resourcegroups/shhirji-northeurope/providers/Microsoft.DesktopVirtualization/hostpools/test/shhirji/msixPackages/manualtest2",
+          "type": "app",
+          "properties": {
+            "CommandLineArguments":"",
+            "Description ": "Notepad",
+            "FriendlyName": "Notepad",
+            "FilePath":"C:\\windows\\system32\\mspaint.exe",
+            "CommandLineSetting" : 1,
+            "ShowInPortal":"true",
+            "IconPath":"c:\\notepad_icon.exe",
+            "IconIndex":0,
+            "MsixPackageId":"ebe384f4-7ba5-45a4-bcca-dc969a59b740"
+          }
+        }
+      }
+    }
+  }
+  
