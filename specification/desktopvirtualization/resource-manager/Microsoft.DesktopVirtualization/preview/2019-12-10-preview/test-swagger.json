@@ -1336,7 +1336,7 @@
               "$ref": "#/parameters/HostPoolNameParameter"
             },
             {
-                "$ref": "#/parameters/MsixPackageFullNameParameter"
+                "$ref": "#/parameters/MSIXPackageFullNameParameter"
             }
           ],
           "responses": {
@@ -1379,7 +1379,7 @@
                 "$ref": "#/parameters/HostPoolNameParameter"
               },
               {
-                "$ref": "#/parameters/MsixPackageFullNameParameter"
+                "$ref": "#/parameters/MSIXPackageFullNameParameter"
               },
               {
                 "name": "msixPackage",
@@ -1437,7 +1437,7 @@
                 "$ref": "#/parameters/HostPoolNameParameter"
               },
               {
-                "$ref": "#/parameters/MsixPackageFullNameParameter"
+                "$ref": "#/parameters/MSIXPackageFullNameParameter"
               }
             ],
             "responses": {
@@ -1480,10 +1480,10 @@
                 "$ref": "#/parameters/HostPoolNameParameter"
               },
               {
-                "$ref": "#/parameters/MsixPackageFullNameParameter"
+                "$ref": "#/parameters/MSIXPackageFullNameParameter"
               },
               {
-                "name": "msixpackage",
+                "name": "msixPackage",
                 "description": "Object containing MSIX Package definitions.",
                 "in": "body",
                 "required": false,
@@ -1553,8 +1553,6 @@
         }
       }
     },
-
-
     "/ResourceProvider/V1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostpools/{hostPoolName}/extractMsixImage": {
       "post": {
         "tags": [
@@ -1609,9 +1607,6 @@
         }
       }
     },
-
-
-
   "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/userSessions": {
         "get": {
           "tags": [
@@ -2690,9 +2685,6 @@
           }
         }
       },
-
-
-
       "MSIXPackage": {
         "description": "Schema for MSIX Package properties.",
         "type": "object",
@@ -3239,7 +3231,6 @@
           }
         }
       },
-
       "ExtractMsixImageProperties": {
         "description": "Schema for Extract MSIX Image properties.",
         "type": "object",
@@ -3352,7 +3343,6 @@
           }
         }
       },
-
       "MsixExtractRequest": {
         "description": "Represents URI referring to MSIX Image",
         "type": "object",
@@ -3362,9 +3352,7 @@
             "description": "URI to Image"
           }
         }
-      },
-
-      
+      },   
       "SessionHost": {
         "type": "object",
         "description": "Represents a SessionHost definition.",
@@ -3616,7 +3604,7 @@
         "minLength": 3,
         "x-ms-parameter-location": "method"
       },
-      "MsixPackageFullNameParameter": {
+      "MSIXPackageFullNameParameter": {
         "name": "msixPackageFullName",
         "in": "path",
         "required": true,
@@ -3702,7 +3690,7 @@
         "required": true,
         "type": "string",
         "description": "URI to the MSIX Image (VHD/CIM).",
-        "maxLength": 48,
+        "maxLength": 100,
         "minLength": 3,
         "x-ms-parameter-location": "method"
       }
