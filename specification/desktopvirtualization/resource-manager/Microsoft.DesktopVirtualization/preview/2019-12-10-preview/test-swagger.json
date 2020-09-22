@@ -320,7 +320,7 @@
           }
         }
       },
-      "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/applicationGroups/{applicationGroupName}": {
+      "/ResourceProvider/V1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/applicationGroups/{applicationGroupName}": {
         "get": {
           "tags": [
             "ApplicationGroup"
@@ -506,7 +506,7 @@
           }
         }
       },
-      "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/applicationGroups": {
+      "/ResourceProvider/V1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/applicationGroups": {
         "get": {
           "tags": [
             "ApplicationGroup"
@@ -1036,7 +1036,7 @@
           }
         }
       },
-      "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}": {
+      "/ResourceProvider/V1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}": {
         "get": {
           "tags": [
             "HostPool"
@@ -1229,7 +1229,7 @@
           }
         }
       },
-      "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools": {
+      "/ResourceProvider/V1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools": {
         "get": {
           "tags": [
             "HostPool"
@@ -1553,16 +1553,16 @@
         }
       }
     },
-    "/ResourceProvider/V1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostpools/{hostPoolName}/extractMsixImage": {
+    "/ResourceProvider/V1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostpools/{hostPoolName}/expandmsiximage": {
       "post": {
         "tags": [
-          "ExtractMsixImage"
+          "MSIXImage"
         ],
-        "operationId": "ExtractMsixImages_Expand",
-        "description": "Extracts and Lists MSIX packages in a given Image Path.",
+        "operationId": "MSIXImages_Expand",
+        "description": "Expands and Lists MSIX packages in a given Image Path.",
         "x-ms-examples": {
-          "ExtractMsixPackage_Expand": {
-            "$ref": "./examples/ExtractMsixImage_Expand_Post.json"
+          "MsixImage_Expand": {
+            "$ref": "./examples/MSIXImage_Expand_Post.json"
           }
         },
         "parameters": [
@@ -1579,12 +1579,12 @@
             "$ref": "#/parameters/HostPoolNameParameter"
           },
           {
-            "name": "msixExtractRequest",
+            "name": "MSIXImageRequest",
             "description": "Object containing URI to MSIX Image",
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/MsixExtractRequest"
+              "$ref": "#/definitions/MSIXImageRequest"
             }
           }
         ],
@@ -1592,7 +1592,7 @@
           "200": {
             "description": "Successfully retrieved MSIX packages in specified Image Path.",
             "schema": {
-              "$ref": "#/definitions/ExtractMsixImageList"
+              "$ref": "#/definitions/ExpandMSIXImageList"
             }
           },
           "default": {
@@ -1659,7 +1659,7 @@
           }
         }
       },
-      "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/sessionHosts/{sessionHostName}": {
+      "/ResourceProvider/V1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/sessionHosts/{sessionHostName}": {
         "get": {
           "tags": [
             "SessionHost"
@@ -1806,7 +1806,7 @@
           }
         }
       },
-      "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/sessionHosts": {
+      "/ResourceProvider/V1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/sessionHosts": {
         "get": {
           "tags": [
             "SessionHost"
@@ -3231,8 +3231,8 @@
           }
         }
       },
-      "ExtractMsixImageProperties": {
-        "description": "Schema for Extract MSIX Image properties.",
+      "ExpandMsixImageProperties": {
+        "description": "Schema for Expand MSIX Image properties.",
         "type": "object",
         "properties": {
           "packageAlias": {
@@ -3308,9 +3308,9 @@
           }
         }
       },
-      "ExtractMsixImage": {
+      "ExpandMsixImage": {
         "type": "object",
-        "description": "Represents a Extract MSIX Image definition.",
+        "description": "Represents a Expand MSIX Image definition.",
         "allOf": [
           {
             "$ref": "../../../../../common-types/resource-management/v1/types.json#/definitions/Resource"
@@ -3318,22 +3318,22 @@
         ],
         "properties": {
           "properties": {
-            "description": "Detailed properties for ExtractMsixImage",
+            "description": "Detailed properties for ExpandMsixImage",
             "x-ms-client-flatten": true,
-            "$ref": "#/definitions/ExtractMsixImageProperties"
+            "$ref": "#/definitions/ExpandMsixImageProperties"
           }
         }
       },
-      "ExtractMsixImageList": {
+      "ExpandMSIXImageList": {
         "type": "object",
-        "title": "ExtractMsixImageList",
-        "description": "List of Extract MSIX Image definitions.",
+        "title": "ExpandMsixImageList",
+        "description": "List of Expand MSIX Image definitions.",
         "properties": {
           "value": {
             "type": "array",
-            "description": "List of Extract MSIX Image definitions.",
+            "description": "List of Expand MSIX Image definitions.",
             "items": {
-              "$ref": "#/definitions/ExtractMsixImage"
+              "$ref": "#/definitions/ExpandMsixImage"
             }
           },
           "nextLink": {
@@ -3343,7 +3343,7 @@
           }
         }
       },
-      "MsixExtractRequest": {
+      "MSIXImageRequest": {
         "description": "Represents URI referring to MSIX Image",
         "type": "object",
         "properties": {
@@ -3684,8 +3684,8 @@
         "minLength": 3,
         "x-ms-parameter-location": "method"
       },
-      "ExtractMsixImageParameter": {
-        "name": "msixExtractRequest",
+      "ExpandMsixImageParameter": {
+        "name": "MSIXImageRequest",
         "in": "path",
         "required": true,
         "type": "string",
