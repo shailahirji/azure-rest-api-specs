@@ -1553,16 +1553,16 @@
         }
       }
     },
-    "/ResourceProvider/V1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostpools/{hostPoolName}/expandmsiximage": {
+    "/ResourceProvider/V1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostpools/{hostPoolName}/extractMsixImage": {
       "post": {
         "tags": [
-          "MSIXImage"
+          "ExtractMsixImage"
         ],
-        "operationId": "MSIXImages_Expand",
-        "description": "Expands and Lists MSIX packages in a given Image Path.",
+        "operationId": "ExtractMsixImages_Expand",
+        "description": "Extracts and Lists MSIX packages in a given Image Path.",
         "x-ms-examples": {
-          "MsixImage_Expand": {
-            "$ref": "./examples/MSIXImage_Expand_Post.json"
+          "ExtractMsixPackage_Expand": {
+            "$ref": "./examples/ExtractMsixImage_Expand_Post.json"
           }
         },
         "parameters": [
@@ -1579,12 +1579,12 @@
             "$ref": "#/parameters/HostPoolNameParameter"
           },
           {
-            "name": "MSIXImageRequest",
+            "name": "msixExtractRequest",
             "description": "Object containing URI to MSIX Image",
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/MSIXImageRequest"
+              "$ref": "#/definitions/MsixExtractRequest"
             }
           }
         ],
@@ -1592,7 +1592,7 @@
           "200": {
             "description": "Successfully retrieved MSIX packages in specified Image Path.",
             "schema": {
-              "$ref": "#/definitions/ExpandMSIXImageList"
+              "$ref": "#/definitions/ExtractMsixImageList"
             }
           },
           "default": {
@@ -3231,8 +3231,8 @@
           }
         }
       },
-      "ExpandMsixImageProperties": {
-        "description": "Schema for Expand MSIX Image properties.",
+      "ExtractMsixImageProperties": {
+        "description": "Schema for Extract MSIX Image properties.",
         "type": "object",
         "properties": {
           "packageAlias": {
@@ -3308,9 +3308,9 @@
           }
         }
       },
-      "ExpandMsixImage": {
+      "ExtractMsixImage": {
         "type": "object",
-        "description": "Represents a Expand MSIX Image definition.",
+        "description": "Represents a Extract MSIX Image definition.",
         "allOf": [
           {
             "$ref": "../../../../../common-types/resource-management/v1/types.json#/definitions/Resource"
@@ -3318,22 +3318,22 @@
         ],
         "properties": {
           "properties": {
-            "description": "Detailed properties for ExpandMsixImage",
+            "description": "Detailed properties for ExtractMsixImage",
             "x-ms-client-flatten": true,
-            "$ref": "#/definitions/ExpandMsixImageProperties"
+            "$ref": "#/definitions/ExtractMsixImageProperties"
           }
         }
       },
-      "ExpandMSIXImageList": {
+      "ExtractMsixImageList": {
         "type": "object",
-        "title": "ExpandMsixImageList",
-        "description": "List of Expand MSIX Image definitions.",
+        "title": "ExtractMsixImageList",
+        "description": "List of Extract MSIX Image definitions.",
         "properties": {
           "value": {
             "type": "array",
-            "description": "List of Expand MSIX Image definitions.",
+            "description": "List of Extract MSIX Image definitions.",
             "items": {
-              "$ref": "#/definitions/ExpandMsixImage"
+              "$ref": "#/definitions/ExtractMsixImage"
             }
           },
           "nextLink": {
@@ -3343,7 +3343,7 @@
           }
         }
       },
-      "MSIXImageRequest": {
+      "MsixExtractRequest": {
         "description": "Represents URI referring to MSIX Image",
         "type": "object",
         "properties": {
@@ -3684,8 +3684,8 @@
         "minLength": 3,
         "x-ms-parameter-location": "method"
       },
-      "ExpandMsixImageParameter": {
-        "name": "MSIXImageRequest",
+      "ExtractMsixImageParameter": {
+        "name": "msixExtractRequest",
         "in": "path",
         "required": true,
         "type": "string",
