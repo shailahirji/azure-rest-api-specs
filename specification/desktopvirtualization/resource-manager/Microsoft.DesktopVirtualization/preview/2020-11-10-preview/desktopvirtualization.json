@@ -4769,7 +4769,113 @@
           "$ref": "#/definitions/HostpoolUpdateActionResponseProperties"
         }
       }
+    },
+    "HostpoolUpdateProperties": {
+      "description": "Schema for Hostpool Update Action Response properties.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Hostpool Update Id.",
+          "x-nullable": true
+        },
+        "hostpoolId": {
+          "type": "string",
+          "description": "Id of the Hostpool.",
+          "x-nullable": false
+        },
+        "subscriptionId": {
+          "type": "string",
+          "description": "Id of the subscription.",
+          "x-nullable": false
+        },
+        "tenantId": {
+          "type": "string",
+          "description": "Id of the tenant.",
+          "x-nullable": false
+        },
+        "hostpoolResourceGroup": {
+          "type": "string",
+          "description": "Resource group the hostpool belongs to",
+          "x-nullable": false
+        },
+        "hostpoolName": {
+          "type": "string",
+          "description": "Name of the hostpool.",
+          "x-nullable": false
+        },
+        "updateName": {
+          "type": "string",
+          "description": "Name of the Hostpool Update",
+          "x-nullable": false
+        },
+        "UpdateMode": {
+          "enum": [
+            "Migrate",
+            "Rollback",
+            "ResourceCleanup"
+          ],
+          "x-ms-enum": {
+            "name": "HostpoolUpdateMode",
+            "modelAsString": true
+          },
+          "type": "string",
+          "description": "Hostpool Update Mode.",
+          "x-nullable": false
+        },
+        "migrateProgress": {
+          "type": "object",
+          "description": "Hostpool Update progress for Migrate mode",
+          "items": {
+            "$ref": "#/definitions/HostpoolUpdateProgress"
+          },
+          "x-nullable": true
+        },
+        "rollbackProgress": {
+          "type": "object",
+          "description": "Hostpool Update progress for Rollback mode",
+          "items": {
+            "$ref": "#/definitions/HostpoolUpdateProgress"
+          },
+          "x-nullable": true
+        },
+        "resourceCleanupProgress": {
+          "type": "object",
+          "description": "Hostpool Update progress for Resource Cleanup mode",
+          "items": {
+            "$ref": "#/definitions/HostpoolUpdateProgress"
+          },
+          "x-nullable": true
+        },
+        "enableRollback": {
+          "type": "boolean",
+          "description": "Preserve data for rollback of this Hostpool Update.",
+          "x-nullable": false
+        },
+        "message": {
+          "type": "string",
+          "description": "Message to verify the request was accepted",
+          "x-nullable": false
+        }
+      }
+    },
+    "HostpoolUpdate": {
+      "type": "object",
+      "description": "Represents the definition of a Hostpool Update",
+      "allOf": [
+        {
+          "$ref": "../../../../../common-types/resource-management/v1/types.json#/definitions/Resource"
+        }
+      ],
+      "properties": {
+        "properties": {
+          "description": "Detailed properties for Hostpool Update. ",
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/HostpoolUpdateProperties"
+        }
+      }
     }
+
   },
   "parameters": {
     "HostPoolNameParameter": {
