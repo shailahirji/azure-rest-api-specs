@@ -4792,22 +4792,22 @@
       "properties": {
           "enableHTTP": {
               "type": "bool",
-              "description": "Enabe HTTP port for VM",
+              "description": "Enable HTTP port for VM",
               "x-nullable": false
             },
             "enableHTTPS": {
               "type": "bool",
-              "description": "Enabe HTTPs port for VM",
+              "description": "Enable HTTPs port for VM",
               "x-nullable": false
             },
             "enableSSH": {
               "type": "bool",
-              "description": "Enabe SSH port for VM",
+              "description": "Enable SSH port for VM",
               "x-nullable": false
             },
             "EnableRDP": {
               "type": "bool",
-              "description": "Enabe RDP port for VM",
+              "description": "Enable RDP port for VM",
               "x-nullable": false
             }
       }
@@ -4956,7 +4956,10 @@
             }, 
             "osDiskType": {
               "enum": [
-                "//TODO"
+                "Standard_LRS",
+        "Premium_LRS",
+        "StandardSSD_LRS",
+        "UltraSSD_LRS"
               ],
               "x-ms-enum": {
                 "name": "OSDiskType",
@@ -5024,7 +5027,8 @@
             },
             "configureSKU": {
               "enum": [
-                "//TODO"
+                "Basic",
+                "Standard"
               ],
               "x-ms-enum": {
                 "name": "ConfigureSKU",
@@ -5036,7 +5040,8 @@
             },
             "configureAssignment": {
               "enum": [
-                "//TODO"
+                "Dynamic",
+                "Static"
               ],
               "x-ms-enum": {
                 "name": "ConfigureAssignment",
@@ -5050,8 +5055,7 @@
               "enum": [
                   "None",
                   "Basic",
-                  "Advanced",
-                "//TODO"
+                  "Advanced"
               ],
               "x-ms-enum": {
                 "name": "NetworkSecurityGroup",
@@ -5104,7 +5108,7 @@
             },
             "password": {
               "type": "string",
-              "description": "Password for AD Domain Join //TOOD , tentative ",
+              "description": "Password for AD Domain Join //TODO , tentative ",
               "x-nullable": false
             }
       }
@@ -5237,7 +5241,10 @@
           "x-nullable": false
         },
         "tagState": {
-          "enum": [ "//TODO"
+          "enum": [ 
+            "Append",
+            "AppendToNetNewOnly",
+            "EraseAndAdd"
           ],
           "x-ms-enum": {
             "name": "Tagstate",
