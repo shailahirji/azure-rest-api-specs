@@ -4770,6 +4770,345 @@
         }
       }
     },
+    "InBoundPorts": {
+      "type": "object",
+      "description": "Defines Inbound Ports. ",
+      "allOf": [
+        {
+          "$ref": "../../../../../common-types/resource-management/v1/types.json#/definitions/Resource"
+        }
+      ],
+      "properties": {
+        "properties": {
+          "description": "Detailed properties for Inbound ports.",
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/InBoundPortsProperties"
+        }
+      }
+    },
+    "InBoundPortsProperties": {
+      "description": "Schema for Region bound Resources properties.",
+      "type": "object",
+      "properties": {
+          "enableHTTP": {
+              "type": "bool",
+              "description": "Enabe HTTP port for VM",
+              "x-nullable": false
+            },
+            "enableHTTPS": {
+              "type": "bool",
+              "description": "Enabe HTTPs port for VM",
+              "x-nullable": false
+            },
+            "enableSSH": {
+              "type": "bool",
+              "description": "Enabe SSH port for VM",
+              "x-nullable": false
+            },
+            "EnableRDP": {
+              "type": "bool",
+              "description": "Enabe RDP port for VM",
+              "x-nullable": false
+            }
+      }
+    },
+    "HostpoolUpdateMaintenanceNotificationsProperties": {
+      "description": "Schema for Hostpool Update Maintenance Notifications properties.",
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "description": "Notification message.",
+          "x-nullable": false
+        },
+        "duration": {
+          "type": "integer",
+          "description": "How many seconds before/after a Hostpool Update should the notification be sent to User.",
+          "x-nullable": false
+        },
+        "beforeUpdate": {
+          "type": "bool",
+          "description": "Send notification to user before the update.",
+          "x-nullable": false
+        },
+        "sendToAllUsers": {
+          "type": "bool",
+          "description": "Send notification to all users, active and inactive.",
+          "x-nullable": false
+        }
+      }
+    },
+    "RegionboundResource": {
+      "type": "object",
+      "description": "Defines Region bound Resource. ",
+      "allOf": [
+        {
+          "$ref": "../../../../../common-types/resource-management/v1/types.json#/definitions/Resource"
+        }
+      ],
+      "properties": {
+        "properties": {
+          "description": "Detailed properties for Region bound resource.",
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/RegionboundResourceProperties"
+        }
+      }
+    },
+    "RegionboundResourceProperties": {
+      "description": "Schema for Region bound Resources properties.",
+      "type": "object",
+      "properties": {
+        "resourceName": {
+          "type": "string",
+          "description": "Users given name to resources.",
+          "x-nullable": false
+        },
+        "resourceResourceGroup": {
+          "type": "string",
+          "description": "Resource group the resource belongs to",
+          "x-nullable": false
+        }
+      }
+    },
+    "HostpoolUpdateMaintenanceNotifications": {
+      "type": "object",
+      "description": "List of maintance notifications used for Hostpool Update. ",
+      "allOf": [
+        {
+          "$ref": "../../../../../common-types/resource-management/v1/types.json#/definitions/Resource"
+        }
+      ],
+      "properties": {
+        "properties": {
+          "description": "Detailed properties for Maintenance Notifications",
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/HostpoolUpdateMaintenanceNotificationsProperties"
+        }
+      }
+    },
+    "HostpoolUpdateVmSettings": {
+      "type": "object",
+      "description": "Defines VM settings. ",
+      "allOf": [
+        {
+          "$ref": "../../../../../common-types/resource-management/v1/types.json#/definitions/Resource"
+        }
+      ],
+      "properties": {
+        "properties": {
+          "description": "Detailed properties for VM settings.",
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/HostpoolUpdateVmSettingsProperties"
+        }
+      }
+    },
+    "HostpoolUpdateVmSettingsProperties": {
+      "description": "Schema for Region bound Resources properties.",
+      "type": "object",
+      "properties": {
+          "resourceGroup": {
+              "type": "string",
+              "description": "Resource group to be assigned to VMs.",
+              "x-nullable": false
+            },
+            "vmLocation": {
+              "type": "string",
+              "description": "Region Vms are bound to.",
+              "x-nullable": false
+            },
+            "NamePrefix": {
+              "type": "string",
+              "description": "Name prefix to be assigned to VM.",
+              "x-nullable": false
+            },
+            "count": {
+              "type": "integer",
+              "description": "Count value to be appended to new VM names, in ascending order.",
+              "x-nullable": false
+            },
+            "delimiter": {
+              "type": "string",
+              "description": "Character used to seperate Prefix name and count in final VM name.",
+              "x-nullable": false
+            },  
+            "image": {
+              "type": "string",
+              "description": "Image to use as base of new VMs.",
+              "x-nullable": false
+            },    
+            "imageType": {
+              "enum": [
+                "Storageblob",
+                "Gallery"
+              ],
+              "x-ms-enum": {
+                "name": "ImageType",
+                "modelAsString": true
+              },
+              "type": "string",
+              "description": "Image Type.",
+              "x-nullable": false
+            },
+            "imageURI": {
+              "type": "string",
+              "description": "URI to image location, relative to storage blob.",
+              "x-nullable": false
+            }, 
+            "osDiskType": {
+              "enum": [
+                "//TODO"
+              ],
+              "x-ms-enum": {
+                "name": "OSDiskType",
+                "modelAsString": true
+              },
+              "type": "string",
+              "description": "Type of underlying OS Disk.",
+              "x-nullable": false
+            },
+            "useManagedDisk": {
+              "type": "boolean",
+              "description": "Use manageed disks for new Vms.",
+              "x-nullable": false
+            },
+            "storageAccount": {
+              "type": "object",
+              "description": "Storage Account for new Vms",
+              "items": {
+                "$ref": "#/definitions/RegionboundResource"
+              },
+              "x-nullable": true
+            },
+            "vmSize": {
+              "type": "string",
+              "description": "Size of new VMs.",
+              "x-nullable": false
+            },
+            "galleryImageOffer": {
+              "type": "string",
+              "description": "Gallery Image Offer. ",
+              "x-nullable": false
+            },
+            "galleryImageSKU": {
+              "type": "string",
+              "description": "Gallery Image SKU.",
+              "x-nullable": false
+            },
+            "galleryImagePublisher": {
+              "type": "string",
+              "description": "Gallery Image Publisher.",
+              "x-nullable": false
+            },
+            "persistUserAssignment": {
+              "type": "boolean",
+              "description": "Persist users for legacy VMs.",
+              "x-nullable": false
+            },
+            "virtualNetwork": {
+              "type": "object",
+              "description": "Vnet for new Vms",
+              "items": {
+                "$ref": "#/definitions/RegionboundResource"
+              },
+              "x-nullable": true
+            },
+            "subNet": {
+              "type": "string",
+              "description": "Subnet for new VMs.",
+              "x-nullable": false
+            },
+            "enablePublicIP": {
+              "type": "boolean",
+              "description": "Enable Public IP for new VMs.",
+              "x-nullable": false
+            },
+            "configureSKU": {
+              "enum": [
+                "//TODO"
+              ],
+              "x-ms-enum": {
+                "name": "ConfigureSKU",
+                "modelAsString": true
+              },
+              "type": "string",
+              "description": "Configure SKU.",
+              "x-nullable": false
+            },
+            "configureAssignment": {
+              "enum": [
+                "//TODO"
+              ],
+              "x-ms-enum": {
+                "name": "ConfigureAssignment",
+                "modelAsString": true
+              },
+              "type": "string",
+              "description": "Configure Assignment.",
+              "x-nullable": false
+            },
+            "networkSecurityGroup": {
+              "enum": [
+                  "None",
+                  "Basic",
+                  "Advanced",
+                "//TODO"
+              ],
+              "x-ms-enum": {
+                "name": "NetworkSecurityGroup",
+                "modelAsString": true
+              },
+              "type": "string",
+              "description": "Network Security Group.",
+              "x-nullable": false
+            },
+            "nsg_Advanced": {
+              "type": "object",
+              "description": "Network Security Group for Advanced settings for new Vms.",
+              "items": {
+                "$ref": "#/definitions/RegionboundResource"
+              },
+              "x-nullable": true
+            },
+            "enablePublicInBoundPorts": {
+              "type": "boolean",
+              "description": "Enable Public InBound Ports for new VMs.",
+              "x-nullable": false
+            },
+            "selectedPorts": {
+              "type": "object",
+              "description": "Inbound ports for new VMs. ",
+              "items": {
+                "$ref": "#/definitions/InBoundPorts"
+              },
+              "x-nullable": true
+            },
+            "specifyDomain": {
+              "type": "boolean",
+              "description": "Specify Domain for new VMs.",
+              "x-nullable": false
+            },
+            "domainToJoin": {
+              "type": "string",
+              "description": "Domain To Join",
+              "x-nullable": false
+            },
+            "organizationalUnitPath": {
+              "type": "string",
+              "description": "Organizational Unit Path",
+              "x-nullable": false
+            },
+            "adDomainJoinUPN": {
+              "type": "string",
+              "description": "AD Domain Join UPN //TODO, tentative. ",
+              "x-nullable": false
+            },
+            "password": {
+              "type": "string",
+              "description": "Password for AD Domain Join //TOOD , tentative ",
+              "x-nullable": false
+            }
+      }
+    },
     "HostpoolUpdateProperties": {
       "description": "Schema for Hostpool Update Action Response properties.",
       "type": "object",
@@ -4809,7 +5148,7 @@
           "description": "Name of the Hostpool Update",
           "x-nullable": false
         },
-        "UpdateMode": {
+        "updateMode": {
           "enum": [
             "Migrate",
             "Rollback",
@@ -4852,12 +5191,86 @@
           "description": "Preserve data for rollback of this Hostpool Update.",
           "x-nullable": false
         },
-        "message": {
-          "type": "string",
-          "description": "Message to verify the request was accepted",
+        "hostpoolSize": {
+          "type": "integer",
+          "description": "The number of Session Hosts in Hostpool before update."
+        },
+        "newHostpoolSize": {
+          "type": "integer",
+          "description": "The number of Session Hosts in Hostpool after update."
+        },
+        "maxVMsRemovedDuringUpdate": {
+          "type": "integer",
+          "description": "The number of current Session Hosts to be used to assist Hostpool Update."
+        },
+        "maxIncrementalVMs": {
+          "type": "integer",
+          "description": "The number of new Session Hosts to be used to assist Hostpool Update."
+        },
+        "persistLegacyVMs": {
+          "type": "boolean",
+          "description": "Update Hostpool while using the legacy underlying VMs.",
           "x-nullable": false
+        },
+        "vmSettings": {
+          "type": "object",
+          "description": "Settings related to VM configuration.",
+          "items": {
+            "$ref": "#/definitions/HostpoolUpdateVmSettings"
+          },
+          "x-nullable": false
+        },
+        "vmTemplate": {
+          "type": "object",
+          "description": "Settings related to VM configuration, in Template form.",
+          "items": {
+            "$ref": "#/definitions/HostpoolUpdateVmTemplate //TODO!! "
+          },
+          "x-nullable": false
+        },
+        "tagResources": {
+          "type": "object",
+          "description": "List of tags per resources associated with Hostpool.",
+          "items": {
+            "$ref": "#/definitions/HostpoolUpdateTagResources //TODO!!"
+          },
+          "x-nullable": false
+        },
+        "tagState": {
+          "enum": [ "//TODO"
+          ],
+          "x-ms-enum": {
+            "name": "Tagstate",
+            "modelAsString": true
+          },
+          "type": "string",
+          "description": "Tag State.",
+          "x-nullable": false
+        },
+        "maintenanceAlerts": {
+          "type": "array",
+          "description": "List of maintenance Notifications. ",
+          "items": {
+            "$ref": "#/definitions/HostpoolUpdateMaintenanceNotifications"
+          },
+          "x-nullable": true
+        },
+        "logOffDelaySeconds": {
+          "type": "integer",
+          "description": "Grace period before logging off users. In seconds."
+        },
+        "logOffMessage": {
+          "type": "string",
+          "description": "Message to active users before they are logged off from the VM.",
+          "x-nullable": true
         }
-      }
+      },
+      "timeCreated": {
+          "format": "date-time",
+          "type": "string",
+          "description": "The timestamp of creation of Hostpool Update.",
+          "readOnly": true
+        }
     },
     "HostpoolUpdate": {
       "type": "object",
@@ -4875,7 +5288,6 @@
         }
       }
     }
-
   },
   "parameters": {
     "HostPoolNameParameter": {
