@@ -5391,6 +5391,22 @@
       }
     }
   },
+  "HostpoolUpdatePatch": {
+    "type": "object",
+    "description": "HostpoolUpdate properties that can be patched.",
+    "allOf": [
+      {
+        "$ref": "../../../../../common-types/resource-management/v1/types.json#/definitions/Resource"
+      }
+    ],
+    "properties": {
+      "properties": {
+        "description": "Detailed properties for Hostpool Update",
+        "x-ms-client-flatten": true,
+        "$ref": "#/definitions/HostpoolUpdateProperties"
+      }
+    }
+  },
   "parameters": {
     "HostPoolNameParameter": {
       "name": "hostPoolName",
