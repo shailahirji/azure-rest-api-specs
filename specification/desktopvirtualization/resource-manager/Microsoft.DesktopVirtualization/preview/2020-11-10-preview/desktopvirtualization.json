@@ -4870,6 +4870,101 @@
         }
       }
     },
+    "HostpoolUpdateVMTemplate": {
+      "type": "object",
+      "description": "Defines VM Template. ",
+      "allOf": [
+        {
+          "$ref": "../../../../../common-types/resource-management/v1/types.json#/definitions/Resource"
+        }
+      ],
+      "properties": {
+        "properties": {
+          "description": "Detailed properties for VM Template",
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/HostpoolUpdateVMTemplateProperties"
+        }
+      }
+    },
+    "HostpoolUpdateVMTemplateProperties": {
+      "description": "Schema for VM Template properties.",
+      "type": "object",
+      "properties": {
+        "domain": {
+          "type": "string",
+          "description": "Domain",
+          "x-nullable": true
+        },
+        "galleryImageOffer": {
+          "type": "string",
+          "description": "Gallery Image Offer",
+          "x-nullable": true
+        },
+        "galleryImagePublisher": {
+          "type": "string",
+          "description": "Gallery Image Publisher",
+          "x-nullable": true
+        },
+        "galleryImageSKU": {
+          "type": "string",
+          "description": "Gallery Image SKU",
+          "x-nullable": true
+        },
+        "imageType": {
+          "type": "string",
+          "description": "Image Type",
+          "x-nullable": true
+        },
+        "imageURI": {
+          "type": "string",
+          "description": "Image URI",
+          "x-nullable": true
+        },
+        "customImageId": {
+          "type": "string",
+          "description": "Custom Image Id",
+          "x-nullable": true
+        },
+        "namePrefix": {
+          "type": "string",
+          "description": "Name Prefix",
+          "x-nullable": true
+        },
+        "osDiskType": {
+          "type": "string",
+          "description": "OS Disk Type",
+          "x-nullable": true
+        },
+        "useManagedDisk": {
+          "type": "boolean",
+          "description": "Use Managed Disk",
+          "x-nullable": true
+        },
+        "vmSizeId": {
+          "type": "string",
+          "description": "VM Size Id",
+          "x-nullable": true
+        },
+        "vmSizeCores": {
+          "type": "string",
+          "description": "VM Size Cores",
+          "x-nullable": true
+        },
+        "vmSizeRAM": {
+          "type": "string",
+          "description": "VM Size RAM",
+          "x-nullable": true
+        },
+        "tags": {
+          "type": "object",
+          "description": "List of tags per resources associated with Hostpool.",
+          "items": {
+            "$ref": "#/definitions/HostpoolUpdateTagResources"
+          },
+          "x-nullable": false
+        }
+      }
+    },
     "HostpoolUpdateMaintenanceNotifications": {
       "type": "object",
       "description": "List of maintance notifications used for Hostpool Update. ",
@@ -5228,15 +5323,15 @@
           "type": "object",
           "description": "Settings related to VM configuration, in Template form.",
           "items": {
-            "$ref": "#/definitions/HostpoolUpdateVmTemplate //TODO!! "
+            "$ref": "#/definitions/HostpoolUpdateVmTemplate"
           },
           "x-nullable": false
         },
-        "tagResources": {
+        "tags": {
           "type": "object",
-          "description": "List of tags per resources associated with Hostpool.",
+          "description": "List of tags per resources associated with Hostpool. //TODO, definition for tags doesn't exist, yet ",
           "items": {
-            "$ref": "#/definitions/HostpoolUpdateTagResources //TODO!!"
+            "$ref": "#/definitions/HostpoolUpdateTagResources "
           },
           "x-nullable": false
         },
