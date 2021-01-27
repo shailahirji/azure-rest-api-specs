@@ -5412,7 +5412,7 @@
         },
         "tags": {
           "type": "object",
-          "description": "List of tags per resources associated with Hostpool. //TODO, definition for tags doesn't exist, yet ",
+          "description": "List of tags per resources associated with Hostpool.",
           "items": {
             "$ref": "#/definitions/HostpoolUpdateTagResources"
           },
