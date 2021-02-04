@@ -2110,7 +2110,7 @@
         }
       }
     },
-    "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostpoolId}/hostpoolupdates/{updateName}": {
+    "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostpoolName}/hostpoolupdates/{updateName}": {
       "get": {
         "tags": [
           "HostpoolUpdate"
@@ -2133,7 +2133,7 @@
             "$ref": "../../../../../common-types/resource-management/v1/types.json#/parameters/ResourceGroupNameParameter"
           },
           {
-            "$ref": "#/parameters/HostPoolIdParameter"
+            "$ref": "#/parameters/HostPoolNameParameter"
           },
           {
             "$ref": "#/parameters/HostpoolUpdateNameParameter"
@@ -2176,7 +2176,7 @@
             "$ref": "../../../../../common-types/resource-management/v1/types.json#/parameters/ResourceGroupNameParameter"
           },
           {
-            "$ref": "#/parameters/HostPoolIdParameter"
+            "$ref": "#/parameters/HostPoolNameParameter"
           },
           {
             "$ref": "#/parameters/HostpoolUpdateNameParameter"
@@ -2234,7 +2234,7 @@
             "$ref": "../../../../../common-types/resource-management/v1/types.json#/parameters/ResourceGroupNameParameter"
           },
           {
-            "$ref": "#/parameters/HostPoolIdParameter"
+            "$ref": "#/parameters/HostPoolNameParameter"
           },
           {
             "$ref": "#/parameters/HostpoolUpdateNameParameter"
@@ -2276,7 +2276,7 @@
             "$ref": "../../../../../common-types/resource-management/v1/types.json#/parameters/ResourceGroupNameParameter"
           },
           {
-            "$ref": "#/parameters/HostPoolIdParameter"
+            "$ref": "#/parameters/HostPoolNameParameter"
           },
           {
             "$ref": "#/parameters/HostpoolUpdateNameParameter"
@@ -2307,7 +2307,7 @@
         }
       }
     },
-    "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostpoolId}/hostpoolupdates": {
+    "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostpoolName}/hostpoolupdates": {
       "get": {
         "tags": [
           "HostpoolUpdate"
@@ -2330,7 +2330,7 @@
             "$ref": "../../../../../common-types/resource-management/v1/types.json#/parameters/ResourceGroupNameParameter"
           },
           {
-            "$ref": "#/parameters/HostPoolIdParameter"
+            "$ref": "#/parameters/HostPoolNameParameter"
           }
         ],
         "responses": {
@@ -2352,7 +2352,7 @@
         }
       }
     },
-    "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostpoolId}/hostpoolupdates/{updateName}/gethostpoolupdateprogress": {
+    "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostpoolName}/hostpoolupdates/{updateName}/gethostpoolupdateprogress": {
       "get": {
         "tags": [
           "HostpoolUpdateProgress"
@@ -2375,7 +2375,7 @@
             "$ref": "../../../../../common-types/resource-management/v1/types.json#/parameters/ResourceGroupNameParameter"
           },
           {
-            "$ref": "#/parameters/HostPoolIdParameter"
+            "$ref": "#/parameters/HostPoolNameParameter"
           },
           {
             "$ref": "#/parameters/HostpoolUpdateNameParameter"
@@ -2397,7 +2397,7 @@
         }
       }
     },
-    "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostpoolId}/hostpoolupdates/{updateName}/controlupdate": {
+    "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostpoolName}/hostpoolupdates/{updateName}/controlupdate": {
       "get": {
         "tags": [
           "HostpoolUpdateControl"
@@ -2420,7 +2420,7 @@
             "$ref": "../../../../../common-types/resource-management/v1/types.json#/parameters/ResourceGroupNameParameter"
           },
           {
-            "$ref": "#/parameters/HostPoolIdParameter"
+            "$ref": "#/parameters/HostPoolNameParameter"
           },
           {
             "$ref": "#/parameters/HostpoolUpdateNameParameter"
@@ -4737,9 +4737,9 @@
           "description": "Hostpool Update Id.",
           "x-nullable": false
         },
-        "hostpoolId": {
+        "hostpoolResourceId": {
           "type": "string",
-          "description": "Id of the Hostpool.",
+          "description": "Resource Id of the Hostpool.",
           "x-nullable": false
         },
         "updateName": {
@@ -5300,29 +5300,14 @@
           "description": "Hostpool Update Id.",
           "x-nullable": true
         },
-        "hostpoolId": {
+        "hostpoolResourceId": {
           "type": "string",
           "description": "Id of the Hostpool.",
-          "x-nullable": false
-        },
-        "subscriptionId": {
-          "type": "string",
-          "description": "Id of the subscription.",
           "x-nullable": false
         },
         "tenantId": {
           "type": "string",
           "description": "Id of the tenant.",
-          "x-nullable": false
-        },
-        "hostpoolResourceGroup": {
-          "type": "string",
-          "description": "Resource group the hostpool belongs to",
-          "x-nullable": false
-        },
-        "hostpoolName": {
-          "type": "string",
-          "description": "Name of the hostpool.",
           "x-nullable": false
         },
         "updateName": {
@@ -5482,16 +5467,6 @@
       "type": "string",
       "description": "The name of the host pool within the specified resource group",
       "maxLength": 24,
-      "minLength": 3,
-      "x-ms-parameter-location": "method"
-    },
-    "HostPoolIdParameter": {
-      "name": "hostPoolId",
-      "in": "path",
-      "required": true,
-      "type": "string",
-      "description": "The Id of the host pool within the specified resource group",
-      "maxLength": 68,
       "minLength": 3,
       "x-ms-parameter-location": "method"
     },
