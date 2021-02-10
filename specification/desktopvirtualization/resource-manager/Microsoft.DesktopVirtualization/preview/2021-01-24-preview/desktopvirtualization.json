@@ -4775,6 +4775,14 @@
           "description": "Time Hostpool Update ended.",
           "x-nullable": true
         },
+        "listOfErrors": {
+          "type": "array",
+          "description": "List of Errors associated update relative to mode. ",
+          "items": {
+            "$ref": "#/definitions/HostpoolUpdateError"
+          },
+          "x-nullable": true
+        },
         "progressPercentage": {
           "type": "number",
           "description": "Percentage progress of the Hostpool Update in current mode.",
@@ -4900,6 +4908,14 @@
           "type": "string",
           "description": "Time Hostpool Update ended.",
           "x-nullable": true
+        },
+        "listOfErrors": {
+          "type": "array",
+          "description": "List of Errors associated update relative to mode. ",
+          "items": {
+            "$ref": "#/definitions/HostpoolUpdateError"
+          },
+          "x-nullable": true
         }
       }
     },
@@ -4916,6 +4932,43 @@
           "description": "Detailed properties for Hostpool Update progress",
           "x-ms-client-flatten": true,
           "$ref": "#/definitions/HostpoolUpdateProgressProperties"
+        }
+      }
+    },
+    "HostpoolUpdateError": {
+      "type": "object",
+      "description": "Represents the definition of Hostpool Update Errors.",
+      "allOf": [
+        {
+          "$ref": "../../../../../common-types/resource-management/v1/types.json#/definitions/Resource"
+        }
+      ],
+      "properties": {
+        "properties": {
+          "description": "Detailed properties for Hostpool Update Errors.",
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/HostpoolUpdateErrorProperties"
+        }
+      }
+    },
+    "HostpoolUpdateErrorProperties": {
+      "description": "Schema for Hostpool Update Error properties.",
+      "type": "object",
+      "properties": {
+        "errorCode": {
+          "type": "string",
+          "description": "Error Code of Hostpool Update Error.",
+          "x-nullable": false
+        },
+        "errorText": {
+          "type": "string",
+          "description": "Error Text of Hostpool Update Error.",
+          "x-nullable": false
+        },
+        "errorContext": {
+          "type": "string",
+          "description": "Error Context of Hostpool Update Error.",
+          "x-nullable": false
         }
       }
     },
