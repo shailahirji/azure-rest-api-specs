@@ -13,7 +13,7 @@
   "produces": [
     "application/json"
   ],
-  "host": "rdhostpoolupdatemanager-shhirji.azurewebsites.net",
+  "host": "localhost:5001",
   "securityDefinitions": {
     "azure_auth": {
       "type": "oauth2",
@@ -2143,7 +2143,7 @@
           "200": {
             "description": "Successfully retrieved Hostpool Update.",
             "schema": {
-              "$ref": "#/definitions/HostPoolUpdate"
+              "$ref": "#/definitions/HostPoolUpdateResponse"
             }
           },
           "default": {
@@ -2386,7 +2386,7 @@
           "200": {
             "description": "Successfully retrieved Hostpool Update Progress.",
             "schema": {
-              "$ref": "#/definitions/HostPoolUpdateProgress"
+              "$ref": "#/definitions/HostPoolUpdateProgressResponse"
             }
           },
           "default": {
@@ -4732,7 +4732,7 @@
         }
       }
     },
-    "HostPoolUpdateMigrateProgressProperties": {
+    "HostPoolUpdateMigrateProgress": {
       "description": "Schema for Hostpool Update Migrate Progress properties.",
       "type": "object",
       "properties": {
@@ -4746,11 +4746,11 @@
             "Completed"
           ],
           "x-ms-enum": {
-            "name": "HostPoolUpdateStatus",
+            "name": "UpdateStatus",
             "modelAsString": true
           },
           "type": "string",
-          "description": "Hostpool Update Mode.",
+          "description": "Hostpool Update Status.",
           "x-nullable": false
         },
         "updateModeStatus": {
@@ -4850,23 +4850,7 @@
         }
       }
     },
-    "HostPoolUpdateMigrateProgress": {
-      "type": "object",
-      "description": "Represents the definition of contents retrieved after hostpool update progress is requested.",
-      "allOf": [
-        {
-          "$ref": "../../../../../common-types/resource-management/v1/types.json#/definitions/Resource"
-        }
-      ],
-      "properties": {
-        "properties": {
-          "description": "Detailed properties for Hostpool Update Migrate progress",
-          "x-ms-client-flatten": true,
-          "$ref": "#/definitions/HostPoolUpdateMigrateProgressProperties"
-        }
-      }
-    },
-    "HostPoolUpdateProgressProperties": {
+    "HostPoolUpdateProgress": {
       "description": "Schema for Hostpool Update Progress properties.",
       "type": "object",
       "properties": {
@@ -4880,21 +4864,29 @@
             "Completed"
           ],
           "x-ms-enum": {
-            "name": "HostPoolUpdateStatus",
+            "name": "UpdateStatus",
             "modelAsString": true
           },
           "type": "string",
-          "description": "Hostpool Update Mode.",
+          "description": "Hostpool Update Status.",
           "x-nullable": false
         },
         "updateModeStatus": {
           "type": "string",
-          "description": "Status of Hostpool Update within given mode. ",
-          "x-nullable": false
+          "description": "Status of Hostpool Update within given mode. "
         },
         "updateMode": {
+          "enum": [
+            "Migrate",
+            "Rollback",
+            "ResourceCleanup"
+          ],
+          "x-ms-enum": {
+            "name": "UpdateMode",
+            "modelAsString": true
+          },
           "type": "string",
-          "description": "Mode of Hostpool Update",
+          "description": "Hostpool Mode Status.",
           "x-nullable": false
         },
         "timeStarted": {
@@ -4919,9 +4911,9 @@
         }
       }
     },
-    "HostPoolUpdateProgress": {
+    "HostPoolUpdateProgressResponse": {
       "type": "object",
-      "description": "Represents the definition of contents retrieved after hostpool update progress is requested. ",
+      "description": "Represents the definition of a Hostpool Update Progress Response",
       "allOf": [
         {
           "$ref": "../../../../../common-types/resource-management/v1/types.json#/definitions/Resource"
@@ -4929,29 +4921,13 @@
       ],
       "properties": {
         "properties": {
-          "description": "Detailed properties for Hostpool Update progress",
+          "description": "Detailed properties for Hostpool Update Progress Response. ",
           "x-ms-client-flatten": true,
-          "$ref": "#/definitions/HostPoolUpdateProgressProperties"
+          "$ref": "#/definitions/HostPoolUpdateProgress"
         }
       }
     },
     "HostPoolUpdateError": {
-      "type": "object",
-      "description": "Represents the definition of Hostpool Update Errors.",
-      "allOf": [
-        {
-          "$ref": "../../../../../common-types/resource-management/v1/types.json#/definitions/Resource"
-        }
-      ],
-      "properties": {
-        "properties": {
-          "description": "Detailed properties for Hostpool Update Errors.",
-          "x-ms-client-flatten": true,
-          "$ref": "#/definitions/HostPoolUpdateErrorProperties"
-        }
-      }
-    },
-    "HostPoolUpdateErrorProperties": {
       "description": "Schema for Hostpool Update Error properties.",
       "type": "object",
       "properties": {
@@ -5015,22 +4991,6 @@
       }
     },
     "InBoundPorts": {
-      "type": "object",
-      "description": "Defines Inbound Ports. ",
-      "allOf": [
-        {
-          "$ref": "../../../../../common-types/resource-management/v1/types.json#/definitions/Resource"
-        }
-      ],
-      "properties": {
-        "properties": {
-          "description": "Detailed properties for Inbound ports.",
-          "x-ms-client-flatten": true,
-          "$ref": "#/definitions/InBoundPortsProperties"
-        }
-      }
-    },
-    "InBoundPortsProperties": {
       "description": "Schema for Region bound Resources properties.",
       "type": "object",
       "properties": {
@@ -5056,7 +5016,7 @@
         }
       }
     },
-    "HostPoolUpdateMaintenanceNotificationsProperties": {
+    "HostPoolUpdateMaintenanceNotifications": {
       "description": "Schema for Hostpool Update Maintenance Notifications properties.",
       "type": "object",
       "properties": {
@@ -5082,23 +5042,7 @@
         }
       }
     },
-    "RegionboundResource": {
-      "type": "object",
-      "description": "Defines Region bound Resource. ",
-      "allOf": [
-        {
-          "$ref": "../../../../../common-types/resource-management/v1/types.json#/definitions/Resource"
-        }
-      ],
-      "properties": {
-        "properties": {
-          "description": "Detailed properties for Region bound resource.",
-          "x-ms-client-flatten": true,
-          "$ref": "#/definitions/RegionboundResourceProperties"
-        }
-      }
-    },
-    "RegionboundResourceProperties": {
+    "RegionBoundResource": {
       "description": "Schema for Region bound Resources properties.",
       "type": "object",
       "properties": {
@@ -5114,8 +5058,7 @@
         }
       }
     },
-    
-    "HostPoolUpdateVMTemplateProperties": {
+    "HostPoolUpdateVMTemplate": {
       "description": "Schema for VM Template properties.",
       "type": "object",
       "properties": {
@@ -5187,63 +5130,13 @@
         "tags": {
           "type": "object",
           "description": "List of tags per resources associated with Hostpool.",
-          "items": {
-            "$ref": "#/definitions/HostPoolUpdateTagResources"
-          },
+          "$ref": "#/definitions/HostPoolUpdateTagResources",
           "x-nullable": false
         }
       }
     },
-    "HostPoolUpdateVMTemplate": {
-      "type": "object",
-      "description": "Defines VM Template. ",
-      "allOf": [
-        {
-          "$ref": "../../../../../common-types/resource-management/v1/types.json#/definitions/Resource"
-        }
-      ],
-      "properties": {
-        "properties": {
-          "description": "Detailed properties for VM Template",
-          "x-ms-client-flatten": true,
-          "$ref": "#/definitions/HostPoolUpdateVMTemplateProperties"
-        }
-      }
-    },
-    "HostPoolUpdateMaintenanceNotifications": {
-      "type": "object",
-      "description": "List of maintenance notifications used for Hostpool Update. ",
-      "allOf": [
-        {
-          "$ref": "../../../../../common-types/resource-management/v1/types.json#/definitions/Resource"
-        }
-      ],
-      "properties": {
-        "properties": {
-          "description": "Detailed properties for Maintenance Notifications",
-          "x-ms-client-flatten": true,
-          "$ref": "#/definitions/HostPoolUpdateMaintenanceNotificationsProperties"
-        }
-      }
-    },
-    "HostPoolUpdateVmSettings": {
-      "type": "object",
-      "description": "Defines VM settings. ",
-      "allOf": [
-        {
-          "$ref": "../../../../../common-types/resource-management/v1/types.json#/definitions/Resource"
-        }
-      ],
-      "properties": {
-        "properties": {
-          "description": "Detailed properties for VM settings.",
-          "x-ms-client-flatten": true,
-          "$ref": "#/definitions/HostPoolUpdateVmSettingsProperties"
-        }
-      }
-    },
-    "HostPoolUpdateVmSettingsProperties": {
-      "description": "Schema for Region bound Resources properties.",
+    "HostPoolUpdateVMSettings": {
+      "description": "Schema for VM Settings properties.",
       "type": "object",
       "properties": {
         "resourceGroup": {
@@ -5268,7 +5161,7 @@
         },
         "delimiter": {
           "type": "string",
-          "description": "Character used to seperate Prefix name and count in final VM name.",
+          "description": "Character used to separate Prefix name and count in final VM name.",
           "x-nullable": false
         },
         "image": {
@@ -5311,15 +5204,13 @@
         },
         "useManagedDisk": {
           "type": "boolean",
-          "description": "Use manageed disks for new Vms.",
+          "description": "Use managed disks for new Vms.",
           "x-nullable": false
         },
         "storageAccount": {
           "type": "object",
           "description": "Storage Account for new Vms",
-          "items": {
-            "$ref": "#/definitions/RegionboundResource"
-          },
+          "$ref": "#/definitions/RegionBoundResource",
           "x-nullable": true
         },
         "vmSize": {
@@ -5350,9 +5241,7 @@
         "virtualNetwork": {
           "type": "object",
           "description": "Vnet for new Vms",
-          "items": {
-            "$ref": "#/definitions/RegionboundResource"
-          },
+          "$ref": "#/definitions/RegionBoundResource",
           "x-nullable": true
         },
         "subNet": {
@@ -5408,9 +5297,7 @@
         "nsg_Advanced": {
           "type": "object",
           "description": "Network Security Group for Advanced settings for new Vms.",
-          "items": {
-            "$ref": "#/definitions/RegionboundResource"
-          },
+          "$ref": "#/definitions/RegionBoundResource",
           "x-nullable": true
         },
         "enablePublicInBoundPorts": {
@@ -5421,9 +5308,7 @@
         "selectedPorts": {
           "type": "object",
           "description": "Inbound ports for new VMs. ",
-          "items": {
-            "$ref": "#/definitions/InBoundPorts"
-          },
+          "$ref": "#/definitions/InBoundPorts",
           "x-nullable": true
         },
         "specifyDomain": {
@@ -5455,35 +5340,14 @@
     },
     "HostPoolUpdateTagResources": {
       "type": "object",
-      "description": "Definition for Tags within HostpoolUpdate",
-      "allOf": [
-        {
-          "$ref": "../../../../../common-types/resource-management/v1/types.json#/definitions/Resource"
-        }
-      ],
-      "properties": {
-        "properties": {
-          "description": "Detailed Tag properties for Hostpool Update. ",
-          "x-ms-client-flatten": true,
-          "$ref": "#/definitions/HostPoolUpdateTagResourcesProperties"
-        }
-      }
-    },
-    "HostPoolUpdateTagResourcesProperties": {
-      "type": "object",
       "description": "Schema for Tag Properties",
-      "allOf": [
-        {
-          "$ref": "../../../../../common-types/resource-management/v1/types.json#/definitions/Resource"
-        }
-      ],
       "properties": {
         "applicationGroup": {
           "type": "object",
           "additionalProperties": {
             "type": "string"
           },
-          "description": "tagsfor Application Groups associated with Hostpool"
+          "description": "tags for Application Groups associated with Hostpool"
         },
         "availabilitySet": {
           "type": "object",
@@ -5540,11 +5404,103 @@
       "description": "Schema for Hostpool Update properties.",
       "type": "object",
       "properties": {
-        "id": {
-          "type": "string",
-          "description": "Hostpool Update Id.",
+        "enableRollback": {
+          "type": "boolean",
+          "description": "Preserve data for rollback of this Hostpool Update."
+        },
+        "hostpoolSize": {
+          "type": "integer",
+          "description": "The number of Session Hosts in Hostpool before update.",
+          "x-nullable": false
+        },
+        "newHostpoolSize": {
+          "type": "integer",
+          "description": "The number of Session Hosts in Hostpool after update.",
+          "x-nullable": false
+        },
+        "maxVMsRemovedDuringUpdate": {
+          "type": "integer",
+          "description": "The number of current Session Hosts to be used to assist Hostpool Update.",
+          "x-nullable": false
+        },
+        "maxIncrementalVMs": {
+          "type": "integer",
+          "description": "The number of new Session Hosts to be used to assist Hostpool Update.",
+          "x-nullable": false
+        },
+        "persistLegacyVMs": {
+          "type": "boolean",
+          "description": "Update Hostpool while using the legacy underlying VMs.",
+          "x-nullable": false
+        },
+        "vmSettings": {
+          "type": "object",
+          "description": "Settings related to VM configuration.",
+          "$ref": "#/definitions/HostPoolUpdateVMSettings",
+          "x-nullable": false
+        },
+        "tags": {
+          "type": "object",
+          "description": "List of tags per resources associated with Hostpool.",
+          "items": {
+            "$ref": "#/definitions/HostPoolUpdateTagResources"
+          },
           "x-nullable": true
         },
+        "tagState": {
+          "enum": [
+            "Append",
+            "AppendToNetNewOnly",
+            "EraseAndAdd"
+          ],
+          "x-ms-enum": {
+            "name": "Tagstate",
+            "modelAsString": true
+          },
+          "type": "string",
+          "description": "Tag State.",
+          "x-nullable": true
+        },
+        "maintenanceAlerts": {
+          "type": "array",
+          "description": "List of maintenance Notifications. ",
+          "items": {
+            "$ref": "#/definitions/HostPoolUpdateMaintenanceNotifications"
+          },
+          "x-nullable": true
+        },
+        "logOffDelaySeconds": {
+          "type": "integer",
+          "description": "Grace period before logging off users. In seconds.",
+          "x-nullable": true
+        },
+        "logOffMessage": {
+          "type": "string",
+          "description": "Message to active users before they are logged off from the VM.",
+          "x-nullable": true
+        }
+      }
+    },
+    "HostPoolUpdate": {
+      "type": "object",
+      "description": "Represents the definition of a Hostpool Update",
+      "allOf": [
+        {
+          "$ref": "../../../../../common-types/resource-management/v1/types.json#/definitions/Resource"
+        }
+      ],
+      "properties": {
+        "properties": {
+          "description": "Detailed properties for Hostpool Update. ",
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/HostPoolUpdateProperties"
+        }
+      }
+    },
+    "HostPoolUpdateResponseProperties": {
+      "description": "Schema for Hostpool Update properties.",
+      "type": "object",
+      "properties": {
         "hostpoolResourceId": {
           "type": "string",
           "description": "Id of the Hostpool.",
@@ -5567,7 +5523,7 @@
             "ResourceCleanup"
           ],
           "x-ms-enum": {
-            "name": "HostPoolUpdateMode",
+            "name": "HostpoolUpdateMode",
             "modelAsString": true
           },
           "type": "string",
@@ -5577,25 +5533,19 @@
         "migrateProgress": {
           "type": "object",
           "description": "Hostpool Update progress for Migrate mode",
-          "items": {
-            "$ref": "#/definitions/HostPoolUpdateMigrateProgress"
-          },
+          "$ref": "#/definitions/HostPoolUpdateMigrateProgress",
           "x-nullable": true
         },
         "rollbackProgress": {
           "type": "object",
           "description": "Hostpool Update progress for Rollback mode",
-          "items": {
-            "$ref": "#/definitions/HostPoolUpdateProgress"
-          },
+          "$ref": "#/definitions/HostPoolUpdateProgress",
           "x-nullable": true
         },
         "resourceCleanupProgress": {
           "type": "object",
           "description": "Hostpool Update progress for Resource Cleanup mode",
-          "items": {
-            "$ref": "#/definitions/HostPoolUpdateProgress"
-          },
+          "$ref": "#/definitions/HostPoolUpdateProgress",
           "x-nullable": true
         },
         "enableRollback": {
@@ -5627,17 +5577,13 @@
         "vmSettings": {
           "type": "object",
           "description": "Settings related to VM configuration.",
-          "items": {
-            "$ref": "#/definitions/HostPoolUpdateVmSettings"
-          },
+          "$ref": "#/definitions/HostPoolUpdateVMSettings",
           "x-nullable": false
         },
         "vmTemplate": {
           "type": "object",
           "description": "Settings related to VM configuration, in Template form.",
-          "items": {
-            "$ref": "#/definitions/HostPoolUpdateVMTemplate"
-          },
+          "$ref": "#/definitions/HostPoolUpdateVMTemplate",
           "x-nullable": false
         },
         "tags": {
@@ -5687,6 +5633,22 @@
         }
       }
     },
+    "HostPoolUpdateResponse": {
+      "type": "object",
+      "description": "Represents the definition of a Hostpool Update",
+      "allOf": [
+        {
+          "$ref": "../../../../../common-types/resource-management/v1/types.json#/definitions/Resource"
+        }
+      ],
+      "properties": {
+        "properties": {
+          "description": "Detailed properties for Hostpool Update Response. ",
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/HostPoolUpdateResponseProperties"
+        }
+      }
+    },
     "HostPoolUpdatePatchProperties": {
       "description": "Schema for Hostpool Update patch properties.",
       "type": "object",
@@ -5694,36 +5656,38 @@
         "enableRollback": {
           "type": "boolean",
           "description": "Preserve data for rollback of this Hostpool Update.",
-          "x-nullable": false
+          "x-nullable": true
         },
         "hostpoolSize": {
           "type": "integer",
-          "description": "The number of Session Hosts in Hostpool before update."
+          "description": "The number of Session Hosts in Hostpool before update.",
+          "x-nullable": true
         },
         "newHostpoolSize": {
           "type": "integer",
-          "description": "The number of Session Hosts in Hostpool after update."
+          "description": "The number of Session Hosts in Hostpool after update.",
+          "x-nullable": true
         },
         "maxVMsRemovedDuringUpdate": {
           "type": "integer",
-          "description": "The number of current Session Hosts to be used to assist Hostpool Update."
+          "description": "The number of current Session Hosts to be used to assist Hostpool Update.",
+          "x-nullable": true
         },
         "maxIncrementalVMs": {
           "type": "integer",
-          "description": "The number of new Session Hosts to be used to assist Hostpool Update."
+          "description": "The number of new Session Hosts to be used to assist Hostpool Update.",
+          "x-nullable": true
         },
         "persistLegacyVMs": {
           "type": "boolean",
           "description": "Update Hostpool while using the legacy underlying VMs.",
-          "x-nullable": false
+          "x-nullable": true
         },
         "vmSettings": {
           "type": "object",
           "description": "Settings related to VM configuration.",
-          "items": {
-            "$ref": "#/definitions/HostPoolUpdateVmSettings"
-          },
-          "x-nullable": false
+          "$ref": "#/definitions/HostPoolUpdateVMSettings",
+          "x-nullable": true
         },
         "tags": {
           "type": "object",
@@ -5745,7 +5709,7 @@
           },
           "type": "string",
           "description": "Tag State.",
-          "x-nullable": false
+          "x-nullable": true
         },
         "maintenanceAlerts": {
           "type": "array",
@@ -5757,7 +5721,8 @@
         },
         "logOffDelaySeconds": {
           "type": "integer",
-          "description": "Grace period before logging off users. In seconds."
+          "description": "Grace period before logging off users. In seconds.",
+          "x-nullable": true
         },
         "logOffMessage": {
           "type": "string",
@@ -5779,22 +5744,6 @@
           "description": "Detailed properties for Hostpool Update",
           "x-ms-client-flatten": true,
           "$ref": "#/definitions/HostPoolUpdatePatchProperties"
-        }
-      }
-    },
-    "HostPoolUpdate": {
-      "type": "object",
-      "description": "Represents the definition of a Hostpool Update",
-      "allOf": [
-        {
-          "$ref": "../../../../../common-types/resource-management/v1/types.json#/definitions/Resource"
-        }
-      ],
-      "properties": {
-        "properties": {
-          "description": "Detailed properties for Hostpool Update. ",
-          "x-ms-client-flatten": true,
-          "$ref": "#/definitions/HostPoolUpdateProperties"
         }
       }
     },
